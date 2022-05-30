@@ -125,6 +125,9 @@ Node* delete(char* data)
 
 Node* get_node(size_t index)
 {
+	if(index == -1)
+	return _cur_node;
+
 	if(index >= size())
 		return _tail;
 	Node* now = first_node();	
@@ -157,6 +160,7 @@ Node* next()
 	Node* result = _cur_node->next;
 	if(_cur_node == _tail)
 		result = _tail->prev;
+	_cur_node = result;
 	return result;
 }
 
@@ -165,5 +169,6 @@ Node* prev()
 	Node* result = _cur_node->prev;
 	if(_cur_node == _head)
 		result = _head->prev;
+	_cur_node = result;
 	return result;
 } 
