@@ -64,8 +64,7 @@ all : build_dir $(EXECS)
 clean :
 	rm -rf $(EXECS) gtest.a gtest_main.a *.o $(BUILD_DIR)
 
-test :
-	$(EXECS)
+test :	$(EXECS)
 
 # Builds gtest.a and gtest_main.a.
 
@@ -96,7 +95,7 @@ $(BUILD_DIR)/$(OBJ_DIR)/gtest_main.a : gtest-all.o gtest_main.o
 # function.
 
 $(BUILD_DIR)/$(OBJ_DIR)/%.o : $(LIB_DIR)/%.c
-	$(CXX) $(CPPFLAGS) -I$(INCLUDE_DIR) $(CXXFLAGS) -c $^ -o $@
+	gcc $(CPPFLAGS) -I$(INCLUDE_DIR) $(CXXFLAGS) -c $^ -o $@
 
 $(SRC_DIR)/%.o : $(SRC_DIR)/%.c $(GTEST_HEADERS) 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@

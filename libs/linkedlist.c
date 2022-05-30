@@ -12,8 +12,8 @@ static size_t nSize = 0;
 void init()
 {
 	isInit = true;
-	_head = malloc(sizeof(Node));
-	_tail = malloc(sizeof(Node));
+	_head = (Node *)malloc(sizeof(Node));
+	_tail = (Node *)malloc(sizeof(Node));
 	_cur_node = _head;
 	
 	_head->next = _tail;
@@ -33,7 +33,7 @@ size_t size()
 void print()
 {
 	printf("LinkedList [ ");
-	Node* now = first();
+	Node* now = first_node();
 	for(int i = 0; i<size();i++)
 	{
 		printf(now->data);
@@ -45,10 +45,10 @@ void print()
 
 void print_file(FILE* stream)
 {	
-	Node* now = last();
+	Node* now = last_node();
 	char s1[10];
 	sprintf(s1,"%d\n",size());
-	fputs(s1,stream)
+	fputs(s1,stream);
 	for(int i = 0; i<size();i++)
 	{
 		fputs(now->data,stream);
@@ -59,7 +59,7 @@ void print_file(FILE* stream)
 
 void clear()
 {
-	Node* now = first();
+	Node* now = first_node();
 	for(int i = 0; i<size();i++)
 	{	
 		now = now->next;
@@ -69,9 +69,9 @@ void clear()
 
 Node* append_left(size_t n,char new_data[n])
 {
-	Node* new = malloc(sizeof(Node));
-	new->data = new_data;
-	insert_after(_head,new);
+	Node* newn = (Node *)malloc(sizeof(Node));
+	newn->data = new_data;
+	insert_after(_head,newn);
 }
 
 
@@ -93,9 +93,9 @@ Node* append(size_t n,char new_data[n])
 {
 	if(!isInit)
 		init();
-	Node* new = malloc(sizeof(Node));
-	new->data=new_data;
-	insert_after(_tail->prev,new);
+	Node* newn = (Node *)malloc(sizeof(Node));
+	newn->data=new_data;
+	insert_after(_tail->prev,newn);
 }
 
 Node* delete_node(Node* cur_node)
@@ -113,7 +113,7 @@ Node* delete_node(Node* cur_node)
 
 Node* delete(char* data)
 {
-	Node* now = first();
+	Node* now = first_node();
 	for(int i = 0;i<size();i++)
 	{
 		if(strcmp(now->data,data))
@@ -127,7 +127,7 @@ Node* get_node(size_t index)
 {
 	if(index >= size())
 		return _tail;
-	Node* now = first();	
+	Node* now = first_node();	
 	for(int i = 0;i<index;i++)
 	{
 		now = now->next;
@@ -135,7 +135,7 @@ Node* get_node(size_t index)
 	return now;
 }
 
-Node* first()
+Node* first_node()
 {
 	if(size() > 0)
 		return _head->next;
@@ -143,7 +143,7 @@ Node* first()
 		return _tail;
 }
 
-Node* last()
+Node* last_node()
 {
 	if(size() > 0)
 		return _tail->prev;
