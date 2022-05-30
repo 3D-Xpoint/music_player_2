@@ -168,7 +168,7 @@ Node* prev()
 {
 	Node* result = _cur_node->prev;
 	if(_cur_node == _head)
-		result = _head->prev;
+		result = _head->next;
 	_cur_node = result;
 	return result;
 } 
