@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-/*
+#include <stdlib.h>
+
 #include "linkedlist.h"
 #include "textfilewriter.h"
-*/
+
 
 void read_command();
 void add();	// 재생목록 첫 번째 위치에 노래 추가
@@ -27,7 +28,7 @@ int main() {
 
     	scanf("%d", number_of_song);
     	for(int i=0; i<number_of_song; i++) {
-		char music_name[100];
+		char music_name[100] = {};
 		scanf("%s", music_name);
 		list[i] = music_name;
     	}
@@ -58,9 +59,7 @@ void read_command() {
 
 
 void list() {
-	printf("LinkedList [ ");
-	//노래명 출력은 for문 반복?
-	printf(" ]");
+	print();
 }
 
 void play() {
