@@ -20,17 +20,17 @@ void load();	// 파일에 저장된 내용 읽고 재생목록 생성
 void save();	// 재생목록 노래명 파일에 저장 (재생목록 역순으로 저장)
 
 
-int main() {
-    	int number_of_song = 0;
-    	int number_of_command = 0;
+int number_of_song = 0;
+char music_list[100] = {};
 
-    	char list[100] = {};
+int main() {
+    	int number_of_command = 0;
 
     	scanf("%d", number_of_song);
     	for(int i=0; i<number_of_song; i++) {
 		char music_name[100] = {};
 		scanf("%s", music_name);
-		list[i] = music_name;
+		music_list[i] = music_name;
     	}
 
     	scanf("%d", number_of_command);
@@ -76,4 +76,10 @@ void clear() {
 void quit() {
 	clear();
 	printf("quit!");
-}	
+}
+
+void save() {
+	for(int i=0; i<number_of_song; i++) {
+		write_file(music_list[i]);
+	}
+}
