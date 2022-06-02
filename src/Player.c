@@ -75,6 +75,5 @@ void clear() {
 
 void quit() {
 	clear();
-	printf("LinkedList is cleared!\n");
 	printf("quit!");
 }	
