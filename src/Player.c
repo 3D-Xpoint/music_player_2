@@ -57,6 +57,11 @@ void read_command() {
     	else { ; }
 }
 
+void add() {
+	// 노래명 malloc으로 node 생성 후,
+	// append_left(문자열 크기, 문자열=노래명)
+	// 문자열을 malloc으로 만들고 함수에 삽입?
+}
 
 void list() {
 	print();
