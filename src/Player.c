@@ -12,10 +12,10 @@ void del();	// 재생목록에서 해당 노래명 삭제
 void list();	// 재생목록을 콘솔에 출력
 void next();	// 재생목록의 다음노래로 이동
 void prev();	// 재생목록의 이전노래로 이동
-void move();	
+void move();	// 노래 이동?
 void play();	// 노래 재생
 void clear();	// 재생목록 비우기
-void quit();	// 뮤직 플레이어 종료 (종료 전 clear());
+void quit();	// 뮤직 플레이어 종료
 void load();	// 파일에 저장된 내용 읽고 재생목록 생성
 void save();	// 재생목록 노래명 파일에 저장 (재생목록 역순으로 저장)
 
@@ -65,21 +65,21 @@ void list() {
 void play() {
 	printf("[");
 	//노래명 선택?
-	printf("] is now playing!");
+	printf("] is now playing!\n");
 }
 
 void clear() {
-	//노래명 free
-	printf("LinkedList is cleared!");
+	clear(); //from linkedlist.c
+	printf("LinkedList is cleared!\n");
 }
 
 void quit() {
 	clear();
-	printf("quit!");
+	printf("quit!\n");
 }
 
 void save() {
 	for(int i=0; i<number_of_song; i++) {
-		write_file(music_list[i]);
+		write_file(music_list[i]); //from textfilewriter.c
 	}
 }
