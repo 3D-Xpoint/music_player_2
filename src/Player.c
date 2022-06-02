@@ -62,6 +62,10 @@ void list() {
 	print();
 }
 
+void next() {
+	next(); //from linkedlist.c
+}
+
 void play() {
 	printf("[");
 	//노래명 선택?
