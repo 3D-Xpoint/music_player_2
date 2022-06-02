@@ -72,7 +72,7 @@ void prev() {
 
 void play() {
 	printf("[");
-	//노래명 선택?
+	printf("%s", _cur_node); //from linkedlist.c -> music name 
 	printf("] is now playing!\n");
 }
 
