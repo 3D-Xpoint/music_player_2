@@ -1,15 +1,19 @@
-//
-// Created by edward on 22. 5. 13..
-//
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "linkedlist.h"
 #include "textfilewriter.h"
+#define MAX_TITLE_SIZE 50
 
 void create_music_titles(FILE* stream){
-	
+	char* music_titles;
+	char buffer[1000];
+
+	while (!feof(stream)) {
+		music_titles = fgets(buffer, sizeof(buffer), stream);
+		printf("%s", music_titles);
+	}
 }
 
 void read_file(char* file_name){
@@ -17,8 +21,9 @@ void read_file(char* file_name){
         create_music_titles(f);
 	fclose(f);
 }
+
 void write_file(char* file_name){
-        FILE *stream = fopen(file_name, "w");
+        FILE *f = fopen(file_name, "w");
 	print_file(f);
         fclose(f);
 }
